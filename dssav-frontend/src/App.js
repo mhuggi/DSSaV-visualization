@@ -1,29 +1,40 @@
-import React from 'react';
+import React, { useState} from 'react';
+import useInterval from 'react-useinterval';
+
 
 function App() {
-  const Svg = () => {
-    return (
-      <svg style={{
-        border: "2px solid gold"
-      }} />
+  const generateDataset = () => (
+    Array(100).fill(0).map(() => ([
+      Math.random() * 80 + 10,
+      Math.random() * 35 + 10,
+    ]))
+  )
+  
+  
+  const Circles = () => {
+    const [dataset, setDataset] = useState(
+      generateDataset()
     )
-  }
-  const Circle = () => {
+    useInterval(() => {
+      const newDataset = generateDataset()
+      setDataset(newDataset)
+    }, 2000)
     return (
-      <svg>
-        <circle
-          cx="150"
-          cy="77"
-          r="40"
-        />
+      <svg viewBox="0 0 100 50">
+        {dataset.map(([x, y], i) => (
+          <circle
+            cx={x}
+            cy={y}
+            r="1"
+          />
+        ))}
       </svg>
     )
   }
-    
+      
   return (
     <div className="App">
-      <Svg />
-      <Circle />
+      <Circles />
     </div>
   );
 }
