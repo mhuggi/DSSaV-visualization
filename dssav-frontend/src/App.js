@@ -1,40 +1,22 @@
-import React, { useState} from 'react';
-import useInterval from 'react-useinterval';
-
+import React, {useState, useEffect} from 'react';
+import Boxplot from './components/Boxplot'
+import dataService from './services/data'
 
 function App() {
-  const generateDataset = () => (
-    Array(100).fill(0).map(() => ([
-      Math.random() * 80 + 10,
-      Math.random() * 35 + 10,
-    ]))
-  )
-  
-  
-  const Circles = () => {
-    const [dataset, setDataset] = useState(
-      generateDataset()
+  const [dataSet, setDataSet] = useState([])
+  useEffect(() => {
+    dataService.getAll().then(data =>
+      setDataSet( data )
     )
-    useInterval(() => {
-      const newDataset = generateDataset()
-      setDataset(newDataset)
-    }, 2000)
-    return (
-      <svg viewBox="0 0 100 50">
-        {dataset.map(([x, y], i) => (
-          <circle
-            cx={x}
-            cy={y}
-            r="1"
-          />
-        ))}
-      </svg>
-    )
-  }
-      
+  }, [])
+
+  console.log(dataSet)
+
+
+
   return (
     <div className="App">
-      <Circles />
+      <Boxplot />
     </div>
   );
 }

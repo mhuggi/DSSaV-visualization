@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+
+app.use(cors())
 
 
-let data = [
+let dataset = [
   {
     id: 1,
     price: 50,
@@ -26,12 +29,12 @@ app.get('/', (req, res) => {
   })
   
   app.get('/api/data', (req, res) => {
-    res.json(data)
+    res.json(dataset)
   })
   app.get('/api/data/:id', (request, response) => {
     const id = request.params.id
-    const note = data.find(note => note.id === id)
-    response.json(note)
+    const data = dataset.find(data => data.id === id)
+    response.json(data)
   })
   
   const PORT = 3001
