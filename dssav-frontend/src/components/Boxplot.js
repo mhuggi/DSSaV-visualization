@@ -11,10 +11,7 @@ const Boxplot = () => {
     }, [])
   
     console.log(dataSet)
-  
-
-    return -1
-
+return -1
 }
 
 export default Boxplot
