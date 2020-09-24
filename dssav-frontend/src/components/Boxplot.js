@@ -9,7 +9,10 @@ var chartHeight = height - (margin * 2);
 
 const Boxplot = () => {
     const [dataSet, setDataSet] = useState([])
-    
+    d3.select("svg").remove("path");
+    d3.select("svg").remove("rect");
+
+
     useEffect(() => {
       dataService.getAll().then(data =>
         setDataSet( data.Data.Data )
@@ -19,8 +22,6 @@ const Boxplot = () => {
     const close = dataSet.map(d => d.close)
     const date = time.map(t => new Date(t))
     const years = date.map(d => d.getFullYear())
-    console.log(time)
-    console.log(date)
 
     var canvas = d3.select("section")
       .append("svg")
@@ -44,11 +45,18 @@ const Boxplot = () => {
     var path = d3.line()
     .x(function(d) {return xScale(d.time)})
     .y(function(d) {return yScale(d.close)});
+    
+    var area = d3.area()
+    .x(function(d) { return xScale(d.time); })
+    .y0(chartHeight)
+    .y1(function(d) { return yScale(d.close); });
+
 
 
     var yAxis = d3.axisLeft(yScale);
     var xAxis = d3.axisBottom(dateScale);
 
+    console.log(dataSet)
     chartGroup.append("path")
     .attr("fill", "none")
     .attr("stroke", "red")
@@ -58,6 +66,12 @@ const Boxplot = () => {
     
     chartGroup.append("g").call(yAxis);
     chartGroup.append("g").call(xAxis).attr("transform","translate(0,"+chartHeight+")");
+
+    chartGroup.append("path")
+       .data([dataSet])
+       .attr("fill", "LightPink")
+       .attr("d", area)
+       .attr("transform","translate("+chartWidth/time.length/2+",0)");
 
 
 return -1
