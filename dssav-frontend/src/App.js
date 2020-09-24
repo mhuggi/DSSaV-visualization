@@ -5,7 +5,11 @@ import Boxplot from './components/Boxplot'
 function App() {
 
   return (
+    <div>
       <Boxplot />
+
+      <section id="canvas"></section>
+    </div>
   );
 }
 
