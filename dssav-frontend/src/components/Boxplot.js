@@ -18,9 +18,9 @@ const Boxplot = () => {
         setDataSet( data.Data.Data )
       )
     }, [])
-    const time = dataSet.map(d => d.time * 1000)
+    const time = dataSet.map(d => d.time)
     const close = dataSet.map(d => d.close)
-    const date = time.map(t => new Date(t))
+    const date = time.map(t => new Date(t * 1000))
     const years = date.map(d => d.getFullYear())
 
     var canvas = d3.select("section")
@@ -44,7 +44,7 @@ const Boxplot = () => {
 
     var path = d3.line()
     .x(function(d) {return xScale(d.time)})
-    .y(function(d) {return yScale(d.close)});
+    .y(function(d) {return yScale(d.close)})
     
     var area = d3.area()
     .x(function(d) { return xScale(d.time); })
@@ -59,8 +59,8 @@ const Boxplot = () => {
     console.log(dataSet)
     chartGroup.append("path")
     .attr("fill", "none")
-    .attr("stroke", "red")
-    .attr("stroke-width", 3)
+    .attr("stroke", "DarkBlue")
+    .attr("stroke-width", 1)
     .attr("d",path(dataSet))
     .attr("transform","translate("+chartWidth/time.length/2+",0)");
     
@@ -69,10 +69,9 @@ const Boxplot = () => {
 
     chartGroup.append("path")
        .data([dataSet])
-       .attr("fill", "LightPink")
+       .attr("fill", "LightBlue")
        .attr("d", area)
        .attr("transform","translate("+chartWidth/time.length/2+",0)");
-
 
 return -1
 }
