@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/data'
+const baseUrl = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=EUR&limit=1825&api_key=51c7d72b0d64ae36dc113a2f99628bcb475eb682a4fcbb3f92a4563044984504'
 
 const getAll = () => {
     const request = axios.get(baseUrl)
