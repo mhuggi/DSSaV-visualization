@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import dataService from '../services/data'
 import * as d3 from "d3"
 
 
-var width = window.innerWidth * 0.8, height = window.innerHeight / 2, margin = 50;
-var chartWidth = width - (margin * 2);
-var chartHeight = height - (margin * 2);
+var width = window.innerWidth * 0.8, 
+height = window.innerHeight / 2, 
+margin = 50, 
+chartWidth = width - (margin * 2),
+chartHeight = height - (margin * 2);
 
 const Boxplot = () => {
     const [dataSet, setDataSet] = useState([])
@@ -51,8 +53,6 @@ const Boxplot = () => {
     .y0(chartHeight)
     .y1(function(d) { return yScale(d.close); });
 
-
-
     var yAxis = d3.axisLeft(yScale);
     var xAxis = d3.axisBottom(dateScale);
 
@@ -73,6 +73,9 @@ const Boxplot = () => {
        .attr("d", area)
        .attr("transform","translate("+chartWidth/time.length/2+",0)");
 
+
+
+    
 return -1
 }
 
