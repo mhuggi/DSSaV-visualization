@@ -1,12 +1,16 @@
 import React from 'react';
-import Boxplot from './components/Boxplot'
+import Linechart from './components/Linechart'
+import Multiline from './components/Multiline'
+import Highchart from './components/Highchart'
 
 
 function App() {
+  
 
   return (
     <div>
-      <Boxplot />
+      <Highchart />
+      
 
       <section id="canvas"></section>
     </div>

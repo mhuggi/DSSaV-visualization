@@ -9,7 +9,7 @@ margin = 50,
 chartWidth = width - (margin * 2),
 chartHeight = height - (margin * 2);
 
-const Boxplot = () => {
+const Linechart = () => {
     const [dataSet, setDataSet] = useState([])
     d3.select("svg").remove("path");
     d3.select("svg").remove("rect");
@@ -73,10 +73,11 @@ const Boxplot = () => {
        .attr("d", area)
        .attr("transform","translate("+chartWidth/time.length/2+",0)");
 
-
+       
+       
 
     
 return -1
 }
 
-export default Boxplot
+export default Linechart
