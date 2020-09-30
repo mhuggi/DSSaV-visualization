@@ -13,10 +13,13 @@ const Highchart = () => {
 
 
     useEffect(() => {
-      dataService.getHour().then(data =>
+      dataService.getAll().then(data =>
         setDataSet( data.Data.Data )
       )
     }, [])
+
+    console.log(dataSet[1000])
+
     const time = dataSet.map(d => d.time)
     const close = dataSet.map(d => d.close)
     const date = time.map(t => new Date(t * 1000))
