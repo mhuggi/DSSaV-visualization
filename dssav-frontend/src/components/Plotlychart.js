@@ -21,6 +21,10 @@ const Plotlychart = () => {
     const actual = dataSet.map(d => d.Actual)
     const date = dataSet.map(d => d.DateTime)
     const forecast = dataSet.map(d => d.Forecast)
+    const invest = dataSet.map(d => d.Invest)
+    const a_momentum = dataSet.map(d => d.a_momentum)
+    const f_momentum = dataSet.map(d => d.f_momentum)
+
 
 
 
@@ -32,19 +36,50 @@ const Plotlychart = () => {
             x: date,
             y: actual,
             type: 'scatter',
-            mode: 'lines+markers',
-            marker: {color: 'red'},
-            name: 'Actual'
+            mode: 'lines',
+            marker: {color: 'blue'},
+            name: 'Actual',
           },
           {
             type: 'scatter',
-            mode: 'lines+markers',
+            mode: 'lines',
             x: date,
             y: forecast,
-            name: 'Forecast'
+            marker: {color: 'green'},
+            name: 'Forecast',
+            text: invest
+
+          },
+          {
+            type: 'bar',
+            x: date,
+            y: a_momentum,
+            yaxis: 'y2'
+          },
+          {
+            type: 'bar',
+            x: date,
+            y: f_momentum,
+            yaxis: 'y2'
+
           }
+
         ]}
-        layout={ {width: width, height: height, title: 'A Fancy Plot'} }
+        layout={ {
+          width: width, 
+          height: height, 
+          title: 'Plot', 
+          plot_bgcolor: 'lightgray',
+          yaxis: {
+            title: 'Actual/Forecast'
+          },
+          yaxis2: {
+            title: 'Momentum',
+            overlaying: 'y',
+            side: 'right',
+            range: [-0.03, 0.2]
+          }
+        } }
         />
   </div>
   )     
