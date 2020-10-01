@@ -1,7 +1,7 @@
 import React from 'react';
 import Linechart from './components/Linechart'
 import Multiline from './components/Multiline'
-import Highchart from './components/Highchart'
+import Boxplot from './components/Boxplot'
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <Highchart />
+      <Boxplot />
       
 
       <section id="canvas"></section>

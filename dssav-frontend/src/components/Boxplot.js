@@ -8,7 +8,7 @@ import HC_more from 'highcharts/highcharts-more';
 HC_more(Highcharts);
 
 
-const Highchart = () => {
+const Boxplot = () => {
     const [dataSet, setDataSet] = useState([])
 
 
@@ -18,7 +18,9 @@ const Highchart = () => {
       )
     }, [])
 
-    console.log(dataSet[1000])
+
+
+
 
     const time = dataSet.map(d => d.time)
     const close = dataSet.map(d => d.close)
@@ -30,17 +32,17 @@ const Highchart = () => {
     const volume = dataSet.map(d => d.volumeto)
     const median = dataSet.map(d => (d.high + d.low) / 2)
 
-    const boxPlot = dataSet.slice(1800).map(d => ({
-        x: d.time * 1000,
+    const boxPlot = dataSet.slice(1500).map(d => ({
+        x: Date.UTC(2013, 1, 7),
         low: d.low, 
-        q1: (d.low + d.high) * 0.25,
+        q1: d.open,
         median: (d.high + d.low) / 2,
-        q3: (d.low + d.high) * 0.75,
+        q3: d.close,
         high: d.high
     }
     )
     )
-    const boxPlotArr = dataSet.slice(1800).map(d => ([
+    const boxPlotArr = dataSet.slice(1500).map(d => ([
         d.low, 
         d.open,
         (d.high + d.low) / 2,
@@ -59,7 +61,12 @@ const Highchart = () => {
         },
         xAxis: {
             categories: years,
-            max: 10
+            max: 100
+        },
+        plotOptions: {
+          boxplot: {
+            fillColor: 'lightgreen'
+          }
         },
         series: [{
             type: 'boxplot',
@@ -79,4 +86,4 @@ const Highchart = () => {
   )    
       
 }
-export default Highchart
+export default Boxplot
