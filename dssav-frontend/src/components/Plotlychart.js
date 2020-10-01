@@ -54,7 +54,8 @@ const Plotlychart = () => {
             type: 'bar',
             x: date,
             y: a_momentum,
-            yaxis: 'y2'
+            yaxis: 'y2',
+            
           },
           {
             type: 'bar',
