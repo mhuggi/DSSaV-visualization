@@ -1,7 +1,5 @@
 import React from 'react';
-import Linechart from './components/Linechart'
-import Multiline from './components/Multiline'
-import Boxplot from './components/Boxplot'
+import Plotlychart from './components/Plotlychart'
 
 
 function App() {
@@ -9,7 +7,7 @@ function App() {
 
   return (
     <div>
-      <Boxplot />
+      <Plotlychart />
       
 
       <section id="canvas"></section>
