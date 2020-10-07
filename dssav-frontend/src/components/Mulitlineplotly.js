@@ -74,12 +74,16 @@ const Plotlymultilinechart = () => {
                 layout={{
                     width: width,
                     height: height,
-                    title: 'A Multiline Plot',
-                    yaxis: { title: 'EURUS value', overlaying: 'y2' },
+                    title: 'Multiline Plot',
+                    xaxis: {
+                        rangeslider: {}
+                    },
+                    yaxis: { title: 'EURUS value', overlaying: 'y2', fixedrange: true },
                     yaxis2: {
                         title: 'Volume', titlefont: { color: 'rgb(148, 103, 189)' },
                         tickfont: { color: 'rgb(148, 103, 189)' },
-                        side: 'right'
+                        side: 'right',
+                        fixedrange: true
                     }
                 }}
             />
