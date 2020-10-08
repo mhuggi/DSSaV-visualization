@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import dataService from '../services/data'
 import Plot from 'react-plotly.js';
 
@@ -8,8 +8,9 @@ const Plotlyforecastchart = () => {
     const width = window.innerWidth,
         height = window.innerHeight * 0.8
 
+
     useEffect(() => {
-        csv(dataService).then(data =>
+        dataService.getAll().then(data =>
             setDataSet(data)
         )
     }, [])

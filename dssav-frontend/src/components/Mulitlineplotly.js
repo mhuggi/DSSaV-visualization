@@ -2,10 +2,11 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import dataService from '../services/data'
 import Plot from 'react-plotly.js';
+import { csv } from 'd3';
 
 const Plotlymultilinechart = () => {
     const [dataSet, setDataSet] = useState([])
-    const width = window.innerWidth,
+    const width = window.innerWidth * 0.9,
         height = window.innerHeight * 0.8
 
     useEffect(() => {
@@ -23,6 +24,7 @@ const Plotlymultilinechart = () => {
     const low = dataSet.map(d => d.Low)
     const high = dataSet.map(d => d.High)
     const volume = dataSet.map(d => d.Volume)
+    const ma = dataSet.map(d => d.MAclose)
 
 
     return (
@@ -68,6 +70,14 @@ const Plotlymultilinechart = () => {
                         mode: 'lines+markers',
                         marker: { color: 'yellow' },
                         name: 'High'
+                    },
+                    {
+                        x: date,
+                        y: ma,
+                        type: 'scatter',
+                        mode: 'line',
+                        marker: { color: 'black' },
+                        name: 'Moving avg Close'
                     },
 
                 ]}
