@@ -55,13 +55,15 @@ const Plotlychart = () => {
             x: date,
             y: a_momentum,
             yaxis: 'y2',
+            name: 'a_momentum'
             
           },
           {
             type: 'bar',
             x: date,
             y: f_momentum,
-            yaxis: 'y2'
+            yaxis: 'y2',
+            name: 'f_momentum'
 
           }
 
@@ -71,6 +73,7 @@ const Plotlychart = () => {
           height: height, 
           title: 'Plot', 
           plot_bgcolor: 'lightgray',
+          barmode: 'relative',
           yaxis: {
             title: 'Actual/Forecast'
           },
