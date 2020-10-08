@@ -25,9 +25,6 @@ const Plotlychart = () => {
     const a_momentum = dataSet.map(d => d.a_momentum)
     const f_momentum = dataSet.map(d => d.f_momentum)
 
-
-
-
   return (
     <div>
       <Plot
