@@ -7,6 +7,7 @@ import Mainpage from './pages/Mainpage';
 import Candlestick from './components/Candlestick'
 import Forecast from './components/Forecast'
 import Multiline from './components/Mulitlineplotly'
+import Heatmap from './components/Heatmap'
 import './App.css'
 
 export default function App() {
@@ -15,19 +16,22 @@ export default function App() {
       <div>
         <nav className='NavbarItems'>
           <ul className='nav-menu'>
-            <li className = 'nav-links'>
+            <li className='nav-links'>
               <Link to="/">Frontpage</Link>
             </li>
-            <li className = 'nav-links'>
+            <li className='nav-links'>
               <Link to="/multiline">Multiline chart</Link>
             </li>
-            <li className = 'nav-links'>
+            <li className='nav-links'>
               <Link to="/candlestick">Candlestick chart</Link>
             </li>
-            <li className = 'nav-links'>
+            <li className='nav-links'>
               <Link to="/forecast">Forecast chart</Link>
             </li>
-            <li className = 'nav-links'>
+            <li className='nav-links'>
+              <Link to="/heatmap">Heatmap</Link>
+            </li>
+            <li className='nav-links'>
               <Link to="/plotly">Plotly chart</Link>
             </li>
           </ul>
@@ -46,6 +50,9 @@ export default function App() {
           </Route>
           <Route path="/plotly">
             <Plotlychart />
+          </Route>
+          <Route path="/heatmap">
+            <Heatmap />
           </Route>
           <Route path="/">
             <Mainpage />
